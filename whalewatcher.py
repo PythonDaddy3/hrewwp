@@ -1,5 +1,10 @@
+import os
+from dotenv import load_dotenv
 import requests
 import streamlit as st
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Function to fetch Ethereum wallet balances from Etherscan API
 def fetch_wallet_balances(api_key, addresses):
@@ -40,8 +45,8 @@ def main():
         "0xC5caAe9CBEfADBb6eC748cB13CD8Ad31a44aEfBB"
     ]
 
-    # Fetch the API key from Streamlit secrets
-    api_key = st.secrets["general"]["ETHERSCAN_API_KEY"]
+    # Fetch the API key from the environment variables
+    api_key = os.getenv('ETHERSCAN_API_KEY')
 
     if not api_key:
         st.error("API key not found. Please set the ETHERSCAN_API_KEY environment variable.")
