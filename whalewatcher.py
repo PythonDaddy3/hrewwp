@@ -1,4 +1,3 @@
-import os
 import requests
 import streamlit as st
 
@@ -41,8 +40,8 @@ def main():
         "0xC5caAe9CBEfADBb6eC748cB13CD8Ad31a44aEfBB"
     ]
 
-    # Fetch the API key from environment variable
-    api_key = os.getenv("ETHERSCAN_API_KEY")
+    # Fetch the API key from Streamlit secrets
+    api_key = st.secrets["general"]["ETHERSCAN_API_KEY"]
 
     if not api_key:
         st.error("API key not found. Please set the ETHERSCAN_API_KEY environment variable.")
